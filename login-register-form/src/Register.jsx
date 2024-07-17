@@ -64,9 +64,11 @@ const Register = () => {
 
     const newErrors = {};
     Object.keys(user).forEach((key) => {
-      validateField(key, user[key]);
-      if (!user[key].trim()) {
-        newErrors[key] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
+      if (key !== "roles") {
+        validateField(key, user[key]);
+        if (!user[key].trim()) {
+          newErrors[key] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
+        }
       }
     });
 
